@@ -1,0 +1,10 @@
+{
+  "name": "vehicle-manager-frontend",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
