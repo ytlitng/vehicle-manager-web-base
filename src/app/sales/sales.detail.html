@@ -1,0 +1,52 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>Edit Sale</strong>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="">Invoice Date</label>
+                    <input type="date" class="form-control" ng-model="salesGridCtrl.sale.invoiceDate">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label for="">Payment Date</label>
+                <input type="date" class="form-control" ng-model="salesGridCtrl.sale.paymentRecieveDate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="">Customer</label>
+                    <ui-select ng-disabled="salesDetailCtrl.sale.invoiceDate" ng-model="SalesDetailCtrl.selectedCustomer" theme="bootstrap">
+                        <ui-select-match placeholder="Select or search a customer in the list...">{{$select.selected.firstName}} {{$select.selected.lastName}}</ui-select-match>
+                        <ui-select-choices repeat="customer in SalesDetailCtrl.customers | filter: $select.search">
+                            <div ng-bind-html="customer.firstName + ' ' + customer.lastName | highlight: $select.search"></div>
+                            <small ng-bind-html="customer.emailAddress | highlight: $select.search"></small>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="">Vehicle</label>
+                        <ui-select ng-model="SalesDetailCtrl.selectedVehicle" theme="bootstrap">
+                            <ui-select-match placeholder="Select or search a vehicle in the list...">{{$select.selected.year}} {{$select.selected.make}} {{$select.selected.model}}</ui-select-match>
+                            <ui-select-choices repeat="vehicle in SalesDetailCtrl.vehicles | filter: $select.search">
+                                <div ng-bind-html="vehicle.make + ' ' + vehicle.model | highlight: $select.search"></div>
+                                <small ng-bind-html="vehicle.year | highlight: $select.search"></small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer clearfix">
+        <button class="btn btn-success pull-right" ng-click="SalesDetailCtrl.save()">
+          Save <i class="glyphicon glyphicon-save"></i>
+        </button>
+    </div>
+</div>

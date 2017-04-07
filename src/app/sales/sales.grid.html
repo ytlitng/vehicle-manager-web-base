@@ -1,0 +1,44 @@
+<button ui-sref="sales.detail" class="btn btn-primary pull-right">
+  <i class="glyphicon glyphicon-plus"></i> Add Sale</button>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Vehicle</th>
+            <th>Invoice Date</th>
+            <th>Payment Date</th>
+            <th>Revenue</th>
+            <th width="1%"></th>
+            <th width="1%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="sale in salesGridCtrl.sales">
+          <td>
+              {{sale.customerName}}
+          </td>
+            <td>
+                {{sale.vehicleName}}
+            </td>
+            <td>
+                {{sale.invoiceDate | date}}
+            </td>
+            <td>
+                {{sale.paymentRecieveDate | date}}
+            </td>
+            <td>
+                {{sale.salePrice | currency: "$"}}
+            </td>
+            <td>
+                <a ui-sref="sales.detail({ id: 1 })" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a href="" class="btn btn-danger" ng-click="salesGridCtrl.remove(sale)">
+                    <i class="glyphicon glyphicon-trash"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
